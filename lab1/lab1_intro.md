@@ -246,7 +246,7 @@ int main (int argc, char **argv)
 	
 	return 0;
 }
-
+```
 Triangular Pattern:
 
 ![Screenshot from 2024-01-26 03-19-47](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/26230f02-d97e-4e61-ac3c-fe52e2dbe462)
@@ -359,5 +359,4 @@ int main (int argc, char **argv)
 	
 	return 0;
 }
-
 ```
