@@ -246,7 +246,118 @@ int main (int argc, char **argv)
 	
 	return 0;
 }
-```
+
 Triangular Pattern:
 
+![Screenshot from 2024-01-26 03-19-47](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/26230f02-d97e-4e61-ac3c-fe52e2dbe462)
+![Screenshot from 2024-01-26 03-19-49](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/631083cb-f7ba-4a2a-9967-89514856944d)
 
+Code:
+```
+#include "ros/ros.h"
+#include "turtlesim/Pose.h"
+#include "geometry_msgs/Twist.h"
+#include "turtlesim/Spawn.h"
+#include "turtlesim/Kill.h"
+#include "turtlesim/TeleportAbsolute.h"
+
+ros::Publisher pub;
+std::string name = "Turtle_JOLA";
+
+void turtleCallback(const turtlesim::Pose::ConstPtr& msg)
+{
+	ROS_INFO("Turtle subscriber@[%f, %f, %f]",
+	msg->x, msg->y, msg->theta);
+}
+
+void turtleMove(double linear_speed, double angular_speed) {
+	geometry_msgs::Twist my_vel; 
+	my_vel.linear.x = linear_speed; 
+	my_vel.angular.z = angular_speed;
+	pub.publish(my_vel);
+}
+
+void oneTime() {
+	std::cout << "onetime \n";
+	turtleMove(0.0, 1.559);
+	ros::Duration(4.0).sleep();
+	turtleMove(5.49 * 2, 0.0);
+	ros::Duration(2.0).sleep();
+}
+
+void trianglePattern() {
+	for (int i = 0; i <= 2; i++) {
+		switch (i) {
+		case 0:
+		std::cout << "case 0 \n";
+			turtleMove(0.0, 1.559);
+			ros::Duration(4.0).sleep();
+			turtleMove(5.49 * 2, 0.0);
+			ros::Duration(2.0).sleep();
+			break;
+		case 1:
+			std::cout << "case 1 \n";
+			turtleMove(0.0, 1.559 + 1.559 / 2);
+			ros::Duration(4.0).sleep();
+			turtleMove(15.52, 0.0);
+			ros::Duration(2.0).sleep();
+			break;
+		case 2:
+			std::cout << "case 2 \n";
+			turtleMove(0.0, 1.559 + 1.559 / 2);
+			ros::Duration(4.0).sleep();
+			turtleMove(5.49 * 2, 0.0);
+			ros::Duration(2.0).sleep();
+			break;
+		}	
+	}
+}
+
+void squarePattern() {
+	std::cout << "90 degrees \n";
+	turtleMove(0.0, 1.559);
+	ros::Duration(4.0).sleep();
+	turtleMove(5.49 * 2, 0.0);
+	ros::Duration(2.0).sleep();
+}
+
+int main (int argc, char **argv)
+{
+	// Initialize the node, setup the NodeHandle for handling the communication with the ROS
+	//system
+	ros::init(argc, argv, "turtlebot_subscriber");
+	ros::NodeHandle nh;
+	// Define the subscriber to turtle's position
+	ros::ServiceClient client1 = nh.serviceClient<turtlesim::Spawn>("/spawn");
+	ros::ServiceClient client = nh.serviceClient<turtlesim::Kill>("/kill");			//kil turtle1
+	turtlesim::Kill srv;															//kil turtle1
+	srv.request.name = "turtle1";													//kil turtle1
+	client.call(srv);																//kil turtle1
+	turtlesim::Spawn srv1;
+	srv1.request.x = 5.54;
+	srv1.request.y = 5.54;
+	srv1.request.theta = 0.0;
+	srv1.request.name = name;
+	client1.call(srv1);
+	ros::ServiceClient tp = nh.serviceClient<turtlesim::TeleportAbsolute>("/" + name + "/teleport_absolute");			//teleport turtle_jola to corner (0.0, 0.0)
+	turtlesim::TeleportAbsolute tp_srv;
+	tp_srv.request.x = 0.0;
+	tp_srv.request.y = 0.0;
+	tp_srv.request.theta = 0.0;
+	tp.call(tp_srv);
+	pub = nh.advertise<geometry_msgs::Twist>("/" + name + "/cmd_vel", 1);	
+	ros::Subscriber sub = nh.subscribe("/" + name + "/pose", 1, turtleCallback);
+	ros::Rate rate(1);
+	oneTime();
+	while (ros::ok())
+	{	
+		trianglePattern();
+		// squarePattern();		
+		ros::spinOnce();
+		rate.sleep();
+	}
+	
+	return 0;
+}
+
+```
