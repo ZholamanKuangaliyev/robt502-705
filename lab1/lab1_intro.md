@@ -1,6 +1,7 @@
 # This is Lab 1 :: intro to ROS
 ***
 Exercise 0:
+
 1HZ:
 ![Screenshot from 2024-01-19 12-30-37](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/56c47d39-78a3-4a56-9e5b-3d804c863f4f)
 ```
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 }
 ```
 50HZ:
+
 ![Screenshot from 2024-01-19 12-32-55](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/cd5fe6f8-d33f-43fc-a002-3e1aa5fa9f95)
 ```
 #include "ros/ros.h"
@@ -71,9 +73,11 @@ int main(int argc, char **argv)
 ```
 ***
 Exercise 1:
+
 ![Screenshot from 2024-01-19 12-02-33](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/c5be4929-5c7a-4960-89e4-352d8c5ca1f2)
 ***
 Exercise 2:
+
 ![Screenshot from 2024-01-25 23-51-20](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/3aa67fb4-68cf-4ddc-95f5-15e498d3d3bf)
 
 ![Screenshot from 2024-01-26 00-00-01](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/680875c6-c1ed-44c0-a3bd-0bf85bc5e57b)
@@ -114,10 +118,12 @@ int main (int argc, char **argv)
 
 ```
 Images:
+
 ![Screenshot from 2024-01-26 00-29-45](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/f2c3aa96-66f7-42f5-8b65-fab573cacfdf)
 ![Screenshot from 2024-01-26 00-29-41](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/8af289d1-d7e7-4af3-ae3e-ae38f11a0cfe)
 ***
 Exercise 4:
+
 Updated Subscriber.cpp code:
 ```
 #include "ros/ros.h"
@@ -159,13 +165,17 @@ int main (int argc, char **argv)
 }
 ```
 Images:
+
 ![Screenshot from 2024-01-26 00-44-18](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/732eef04-90c8-4ed4-bad4-eb2b42ba3ea8)
 ![Screenshot from 2024-01-26 00-44-14](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/3fcd4b70-2fc4-4d4f-acc1-ec6f15ae055e)
 ***
 Exercise 5:
-Square Patter:
+
+Square Pattern:
+
 ![Screenshot from 2024-01-26 02-29-24](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/cbc4139f-007b-400c-b58f-eb0a722a58e8)
 ![Screenshot from 2024-01-26 02-29-27](https://github.com/ZholamanKuangaliyev/robt502-705/assets/112862577/75929715-d9a6-499d-8ea0-533ebb882efe)
+
 Code of the subscriber.cpp:
 ```
 #include "ros/ros.h"
@@ -237,4 +247,6 @@ int main (int argc, char **argv)
 	return 0;
 }
 ```
+Triangular Pattern:
+
 
